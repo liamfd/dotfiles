@@ -21,7 +21,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -67,7 +67,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 ZSH_THEME=pygmalion
-plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew osx zsh-syntax-highlighting)
+plugins=(git colored-man colorize github vagrant virtualenv pip python brew osx zsh-syntax-highlighting)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
