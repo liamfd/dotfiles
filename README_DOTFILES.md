@@ -28,5 +28,7 @@ dotfiles config --local status.showUntrackedFiles no
 dotfiles status
 dotfiles add .zshrc
 dotfiles commit -m "Updated .zshrc"
+dotfiles add -u # add only tracked files, ignores everything else in ~
+dotfiles commit -m "Updated everything"
 dotfiles push
 ```
