@@ -22,7 +22,7 @@ dotfiles config --local status.showUntrackedFiles no
 
 ### Update
 
-`dotfiles` is just an alias for this get repo. As such, you can use whichever git commands you'd like. For instance, to update the stored `.zshrc`:
+`dotfiles` is just an alias for this git repo. As such, you can use whichever git commands you'd like. For instance, to update the stored `.zshrc`:
 
 ```sh
 dotfiles status
