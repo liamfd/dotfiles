@@ -17,13 +17,20 @@ git_checkout_branch_from_origin_master()
   git checkout -b $1 origin/master # create new branch off of it
 }
 
+git_checkout_branch_from_origin()
+{
+  git fetch # refresh origin/master
+  git checkout $1 # create new branch off of it
+}
+
 # ALIASES
 
 # Git
 alias glom='git pull origin master' # new
 # alias gcam='git add .; git commit -m' # overridden, to include untracked files
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
-alias gcbm=git_checkout_branch_from_origin_master
+alias gcbom=git_checkout_branch_from_origin_master
+alias gcbo=git_checkout_branch_from_origin
 
 
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
