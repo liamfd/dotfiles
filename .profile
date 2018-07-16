@@ -20,7 +20,7 @@ git_checkout_branch_from_origin_master()
 git_checkout_branch_from_origin()
 {
   git fetch # refresh origin/master
-  git checkout $1 # create new branch off of it
+  git checkout -b $1 origin/$1 # create new branch off of it, even if multiple origins: https://stackoverflow.com/a/1783426
 }
 
 # ALIASES
