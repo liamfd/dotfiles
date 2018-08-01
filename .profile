@@ -23,6 +23,18 @@ git_checkout_branch_from_origin()
   git checkout -b $1 origin/$1 # create new branch off of it, even if multiple origins: https://stackoverflow.com/a/1783426
 }
 
+git_rename_remote_branch()
+{
+  NEW_NAME=$1
+
+  # get current branch name, throw if in detached HEAD state
+  CURR_NAME="$(git symbolic-ref --short HEAD)"
+
+  git branch -m $NEW_NAME
+  git push origin :$CURR_NAME $NEW_NAME
+  git push origin -u $NEW_NAME
+}
+
 # ALIASES
 
 # Git
@@ -31,6 +43,7 @@ alias glom='git pull origin master' # new
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
 alias gcbom=git_checkout_branch_from_origin_master
 alias gcbo=git_checkout_branch_from_origin
+alias grrb=git_rename_remote_branch
 
 
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
