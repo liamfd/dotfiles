@@ -1,5 +1,5 @@
 # env vars
-AWS_USER=liam
+export AWS_USER=liam
 
 # NVM (assumes homebrew installation)
 
