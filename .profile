@@ -1,3 +1,6 @@
+# env vars
+AWS_USER=liam
+
 # NVM (assumes homebrew installation)
 
 export NVM_DIR=~/.nvm
