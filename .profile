@@ -48,6 +48,9 @@ alias gcbom=git_checkout_branch_from_origin_master
 alias gcbo=git_checkout_branch_from_origin
 alias grrb=git_rename_remote_branch
 
+# override the zsh command with one that does not include the `git add -A`
+alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+
 
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
 alias dotfiles='/usr/bin/git --git-dir=/Users/liam/.cfg/ --work-tree=/Users/liam'
