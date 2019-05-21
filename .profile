@@ -12,6 +12,14 @@ source $(brew --prefix nvm)/nvm.sh
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
 
+# Get my path set up for Android studio / RN / Fastlane
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH="$PATH:$HOME/.fastlane/bin"
+
 # FUNCTIONS
 
 git_checkout_branch_from_origin_master()
