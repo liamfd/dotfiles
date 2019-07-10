@@ -25,7 +25,7 @@ export PATH="$PATH:$HOME/.fastlane/bin"
 git_checkout_branch_from_origin_master()
 {
   git fetch # refresh origin/master
-  git checkout -b $1 origin/master # create new branch off of it
+  git checkout -b $1 origin/master --no-track # create new branch off of it
 }
 
 git_checkout_branch_from_origin()
