@@ -56,6 +56,10 @@ alias gcbom=git_checkout_branch_from_origin_master
 alias gcbo=git_checkout_branch_from_origin
 alias grrb=git_rename_remote_branch
 
+# render an interactive git branch picker sorted by most recent commit,
+# and checkout the selection
+alias gbrecent='git checkout $(git branch --sort=-committerdate | fzf)'
+
 # override the zsh command with one that does not include the `git add -A`
 alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 

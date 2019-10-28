@@ -22,17 +22,13 @@ dotfiles config --local status.showUntrackedFiles no
 
 ### Dependencies
 - [jq](https://stedolan.github.io/jq/)
+- [fzf](https://github.com/junegunn/fzf)
 
 *Install*:
 ```
 brew install jq
+brew install fzf
 ```
-
-*Usage*:
-```
-aws dynamodb get-item --table-name liam-Application --key "$(jq -n '{appId: {N: "5001847"}}')"
-```
-
 
 ### Update
 
