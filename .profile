@@ -31,7 +31,9 @@ git_checkout_branch_from_origin_master()
 git_checkout_branch_from_origin()
 {
   git fetch # refresh origin/master
-  git checkout -b $1 origin/$1 # create new branch off of it, even if multiple origins: https://stackoverflow.com/a/1783426
+  REMOTE_BRANCH_NAME=$1
+  LOCAL_BRANCH_NAME=${2:-REMOTE_BRANCH_NAME} # if the second argument is supplied, use it, otherwise fall back to the branch name on origin
+  git checkout -b $LOCAL_BRANCH_NAME origin/$1 # create new branch off of it, even if multiple origins: https://stackoverflow.com/a/1783426
 }
 
 git_rename_remote_branch()
