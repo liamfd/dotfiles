@@ -22,18 +22,21 @@ export PATH="$PATH:$HOME/.fastlane/bin"
 
 # FUNCTIONS
 
-git_checkout_branch_from_origin_master()
-{
-  git fetch # refresh origin/master
-  git checkout -b $1 origin/master --no-track # create new branch off of it
-}
-
 git_checkout_branch_from_origin()
 {
-  git fetch # refresh origin/master
-  REMOTE_BRANCH_NAME=$1
-  LOCAL_BRANCH_NAME=${2:-REMOTE_BRANCH_NAME} # if the second argument is supplied, use it, otherwise fall back to the branch name on origin
-  git checkout -b $LOCAL_BRANCH_NAME origin/$1 # create new branch off of it, even if multiple origins: https://stackoverflow.com/a/1783426
+  REMOTE_BRANCH_NAME=$1 # string
+  LOCAL_BRANCH_NAME=$2 # ?string
+
+  git fetch
+
+  if [ $LOCAL_BRANCH_NAME ]
+  then
+    # if we have LOCAL_BRANCH_NAME, treat it as a totally separate branch
+    git checkout -b $LOCAL_BRANCH_NAME origin/$REMOTE_BRANCH_NAME --no-track
+  else
+    # otherwise, just make a local copy
+    git checkout -b $REMOTE_BRANCH_NAME origin/$REMOTE_BRANCH_NAME
+  fi
 }
 
 git_rename_remote_branch()
@@ -54,7 +57,7 @@ git_rename_remote_branch()
 alias glom='git pull origin master' # new
 # alias gcam='git add .; git commit -m' # overridden, to include untracked files
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
-alias gcbom=git_checkout_branch_from_origin_master
+alias gcbom=git_checkout_branch_from_origin "master"
 alias gcbo=git_checkout_branch_from_origin
 alias grrb=git_rename_remote_branch
 
