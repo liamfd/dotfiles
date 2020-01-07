@@ -57,7 +57,7 @@ git_rename_remote_branch()
 alias glom='git pull origin master' # new
 # alias gcam='git add .; git commit -m' # overridden, to include untracked files
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
-alias gcbom=git_checkout_branch_from_origin "master"
+alias gcbom='git_checkout_branch_from_origin master'
 alias gcbo=git_checkout_branch_from_origin
 alias grrb=git_rename_remote_branch
 
