@@ -68,6 +68,9 @@ alias gbrecent='git checkout $(git branch --sort=-committerdate | fzf)'
 # override the zsh command with one that does not include the `git add -A`
 alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 
-
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
 alias dotfiles='/usr/bin/git --git-dir=/Users/liam/.cfg/ --work-tree=/Users/liam'
+
+# Fabric custom aliases
+alias use-orgs='bash /Users/liam/fabric/linen/tools/use-orgs.sh; export AWS_PROFILE=orgs_admin'
+alias use-og='bash /Users/liam/fabric/linen/tools/use-og.sh; unset AWS_PROFILE'
