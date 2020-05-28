@@ -1,5 +1,6 @@
 # env vars
 export AWS_USER=liam
+export AWS_PROFILE=orgs_admin
 
 # NVM (assumes homebrew installation)
 
