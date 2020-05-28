@@ -52,6 +52,13 @@ git_rename_remote_branch()
   git push origin -u $NEW_NAME
 }
 
+jq_format_file()
+{
+  FILE_PATH=$1
+
+  echo "$(jq . $FILE_PATH)" > $FILE_PATH
+}
+
 # ALIASES
 
 # Git
@@ -68,6 +75,9 @@ alias gbrecent='git checkout $(git branch --sort=-committerdate | fzf)'
 
 # override the zsh command with one that does not include the `git add -A`
 alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+
+# see jq_format_file
+alias format_json_file=jq_format_file
 
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
 alias dotfiles='/usr/bin/git --git-dir=/Users/liam/.cfg/ --work-tree=/Users/liam'
