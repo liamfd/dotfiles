@@ -72,7 +72,7 @@ alias grrb=git_rename_remote_branch
 # render an interactive git branch picker sorted by most recent commit
 alias gbrecent='git branch --sort=-committerdate | fzf'
 
-# override the zsh command with one that does not include the `git add -A`
+# override the zsh alias with one that does not include the `git add -A`
 alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 
 # see jq_format_file
