@@ -52,12 +52,21 @@ git_rename_remote_branch()
   git push origin -u $NEW_NAME
 }
 
+# create fixup commit and launch interactive rebase to apply it
+# pairs well with `glfhash` below
+git_fixup_rebase_autosquash()
+{
+  git commit --fixup $1
+  git rebase -i $1~ --autosquash
+}
+
 jq_format_file()
 {
   FILE_PATH=$1
 
   echo "$(jq . $FILE_PATH)" > $FILE_PATH
 }
+
 
 # ALIASES
 
@@ -68,12 +77,17 @@ alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
 alias gcbom='git_checkout_branch_from_origin master'
 alias gcbo=git_checkout_branch_from_origin
 alias grrb=git_rename_remote_branch
+alias gfix="git commit --fixup"
+alias gfixra=git_fixup_rebase_autosquash
 
 # render an interactive git branch picker sorted by most recent commit
 alias gbrecent='git branch --sort=-committerdate | fzf'
 
 # override the zsh alias with one that does not include the `git add -A`
 alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+
+# interactively choose a commit hash from the log
+alias glfhash="git log --oneline | fzf | awk '{print \$1}'"
 
 # see jq_format_file
 alias format_json_file=jq_format_file
