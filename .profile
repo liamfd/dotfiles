@@ -67,6 +67,15 @@ jq_format_file()
   echo "$(jq . $FILE_PATH)" > $FILE_PATH
 }
 
+# create a file with intermediate directories as needed
+touch_p()
+{
+  FILE_PATH=$1
+  DIR_PATH=$(dirname $FILE_PATH)
+
+  mkdir -p $DIR_PATH
+  touch $FILE_PATH
+}
 
 # ALIASES
 
@@ -91,6 +100,9 @@ alias glfhash="git log --oneline | fzf | awk '{print \$1}'"
 
 # see jq_format_file
 alias format_json_file=jq_format_file
+
+# see touch_p
+alias touchp=touch_p
 
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
 alias dotfiles='/usr/bin/git --git-dir=/Users/liam/.cfg/ --work-tree=/Users/liam'
