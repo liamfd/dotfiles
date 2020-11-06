@@ -20,6 +20,12 @@ dotfiles config --local status.showUntrackedFiles no
 # if there is a merge conflict, rename the conflicting files and try again
 ```
 
+#### Setup - ZSH
+
+Use `oh-my-zsh`. Additionally, install some plugins:
+
+* https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
+
 ### Dependencies
 - [jq](https://stedolan.github.io/jq/)
 - [fzf](https://github.com/junegunn/fzf)
