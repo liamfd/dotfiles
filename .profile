@@ -9,8 +9,9 @@ source $(brew --prefix nvm)/nvm.sh
 
 # PYTHON
 
-# Setting PATH for Python 3.6 (this doesn't appear to be required to get the aws cli working properly)
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+# Setting PATH to support `pip3 install awscli --upgrade --user`
+# see https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html#awscli-install-osx-path
+PATH="${HOME}/Library/Python/3.6/bin:${PATH}"
 export PATH
 
 # Get my path set up for Android studio / RN / Fastlane
