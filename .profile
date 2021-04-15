@@ -22,6 +22,9 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH="$PATH:$HOME/.fastlane/bin"
 
+# Rust
+source "$HOME/.cargo/env"
+
 # FUNCTIONS
 
 git_checkout_branch_from_origin()
