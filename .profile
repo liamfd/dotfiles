@@ -96,8 +96,8 @@ alias gbrecent='git branch --sort=-committerdate | fzf'
 # override the zsh alias with one that does not include the `git add -A`
 alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
 
-# interactively choose a commit hash from the log
-alias glfhash="git log --oneline | fzf | awk '{print \$1}'"
+# interactively choose a commit hash from the last 30 in the log
+alias glfhash="git log --oneline -n 30 | fzf --no-sort | awk '{print \$1}'"
 
 # see jq_format_file
 alias format_json_file=jq_format_file
