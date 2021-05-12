@@ -111,6 +111,10 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# override standard to enable searching history with globs
+bindkey '^R' history-incremental-pattern-search-backward
+
 # Setup
 ## custom aliases
 source ~/.profile
+
