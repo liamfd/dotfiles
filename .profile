@@ -108,6 +108,9 @@ alias format_json_file=jq_format_file
 # see touch_p
 alias touchp=touch_p
 
+# get a histogram unique lines
+alias histog="sort -n | uniq -c | sort -nr"
+
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
 alias dotfiles='/usr/bin/git --git-dir=/Users/liam/.cfg/ --work-tree=/Users/liam'
 
