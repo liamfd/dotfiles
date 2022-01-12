@@ -20,21 +20,36 @@ dotfiles config --local status.showUntrackedFiles no
 # if there is a merge conflict, rename the conflicting files and try again
 ```
 
-#### Setup - ZSH
+#### Setup - Other packages
 
-Use `oh-my-zsh`. Additionally, install some plugins:
+1. [Install `homebrew`](https://brew.sh/)
+2. Setup oh-my-zsh and plugins
 
-* https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
+    ```bash
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/    zsh-syntax-highlighting
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    ```
 
-### Dependencies
-- [jq](https://stedolan.github.io/jq/)
-- [fzf](https://github.com/junegunn/fzf)
+    Additionally, [install + configure the powerlevel10k fonts](https://github.com/romkatv/powerlevel10k#fonts), you'll want to support both iterm and vscode.
 
-*Install*:
-```
-brew install jq
-brew install fzf
-```
+3. Install some useful command line utils:
+
+    ```bash
+    brew install gh tree ag jq fzf diff-so-fancy
+    ```
+
+    `diff-so-fancy` requires some [additional setup](https://github.com/so-fancy/diff-so-fancy#with-git) to use with other command line tools.
+
+4. Install some other programs you like:
+
+    ```bash
+    brew install --cask iterm2 visual-studio-code spotify
+    ```
+
+5. Install some programming environment things:
+
+    1. [Install NVM](https://github.com/nvm-sh/nvm)
 
 ### Update
 
