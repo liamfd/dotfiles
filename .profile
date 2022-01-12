@@ -1,12 +1,3 @@
-# env vars
-export AWS_USER=liam
-export AWS_PROFILE=orgs_admin
-
-# NVM (assumes homebrew installation)
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
 # PYTHON
 
 # Setting PATH to support `pip3 install awscli --upgrade --user`
@@ -20,10 +11,9 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH="$PATH:$HOME/.fastlane/bin"
 
 # Rust
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
 
 # FUNCTIONS
 
@@ -113,7 +103,3 @@ alias histog="sort -n | uniq -c | sort -nr"
 
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
 alias dotfiles='/usr/bin/git --git-dir=/Users/liam/.cfg/ --work-tree=/Users/liam'
-
-# Fabric custom aliases
-alias use-orgs='bash /Users/liam/fabric/linen/tools/use-orgs.sh; export AWS_PROFILE=orgs_admin'
-alias use-og='bash /Users/liam/fabric/linen/tools/use-og.sh; unset AWS_PROFILE'
