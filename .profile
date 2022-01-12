@@ -102,4 +102,4 @@ alias touchp=touch_p
 alias histog="sort -n | uniq -c | sort -nr"
 
 # This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
-alias dotfiles='/usr/bin/git --git-dir=/Users/liam/.cfg/ --work-tree=/Users/liam'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
