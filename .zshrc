@@ -90,7 +90,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages colorize github macos zsh-syntax-highlighting)
+plugins=(git z colored-man-pages colorize github macos zsh-syntax-highlighting zsh-better-npm-completion zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
