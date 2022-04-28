@@ -82,6 +82,7 @@ alias gcbo=git_checkout_branch_from_origin
 alias grrb=git_rename_remote_branch
 alias gfix="git commit --fixup"
 alias gfixra=git_fixup_rebase_autosquash
+alias glp="git log"
 
 # render an interactive git branch picker sorted by most recent commit
 alias gbrecent='git branch --sort=-committerdate | fzf'
