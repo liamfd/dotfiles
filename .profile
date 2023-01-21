@@ -71,18 +71,36 @@ touch_p()
   touch $FILE_PATH
 }
 
+# create a file with intermediate directories as needed
+file_with_intermediate()
+{
+  git checkout -b
+  DIR_PATH=$(dirname $FILE_PATH)
+
+  mkdir -p $DIR_PATH
+  touch $FILE_PATH
+}
+
+git_add_patch_and_commit(){
+  FILES="$@"
+  git add --patch "$@"
+  git commit
+}
+
 # ALIASES
 
 # Git
 alias glom='git pull origin master' # new
 # alias gcam='git add .; git commit -m' # overridden, to include untracked files
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
+alias gcbo='git_checkout_branch_from_origin'
 alias gcbom='git_checkout_branch_from_origin master'
-alias gcbo=git_checkout_branch_from_origin
 alias grrb=git_rename_remote_branch
 alias gfix="git commit --fixup"
 alias gfixra=git_fixup_rebase_autosquash
 alias glp="git log"
+alias gapac=git_add_patch_and_commit
+alias agapac="git add -N . && git_add_patch_and_commit"
 
 # render an interactive git branch picker sorted by most recent commit
 alias gbrecent='git branch --sort=-committerdate | fzf'
