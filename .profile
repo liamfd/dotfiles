@@ -100,7 +100,7 @@ alias gfix="git commit --fixup"
 alias gfixra=git_fixup_rebase_autosquash
 alias glp="git log"
 alias gapac=git_add_patch_and_commit
-alias agapac="git add -N . && git_add_patch_and_commit"
+alias agapac="git add --intent-to-add . && git_add_patch_and_commit"
 
 # render an interactive git branch picker sorted by most recent commit
 alias gbrecent='git branch --sort=-committerdate | fzf'
