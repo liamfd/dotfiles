@@ -1,3 +1,4 @@
+source /Users/liamdoran/.titan-shell-config
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -151,3 +152,6 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
+
+# fixes an issue with Titan's Ansible api-setup.yml deploy
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
