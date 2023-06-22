@@ -82,9 +82,17 @@ file_with_intermediate()
 }
 
 git_add_patch_and_commit(){
-  FILES="$@"
   git add --patch "$@"
   git commit
+}
+
+go_to_gh_pr(){
+  gh pr view -w || gh pr create -d
+}
+
+# https://gist.github.com/hlissner/db74d23fc00bed81ff62
+global_find_replace(){
+  ag -0 -l $1 | xargs -0 perl -pi.bak -e "s/$1/$2/g"
 }
 
 # ALIASES
@@ -111,14 +119,9 @@ alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verif
 # interactively choose a commit hash from the last 30 in the log
 alias glfhash="git log --oneline -n 30 | fzf --no-sort | awk '{print \$1}'"
 
-# see jq_format_file
 alias format_json_file=jq_format_file
-
-# see touch_p
 alias touchp=touch_p
-
-# get a histogram unique lines
+alias ghpr=go_to_gh_pr
+alias agr=global_find_replace
 alias histog="sort -n | uniq -c | sort -nr"
-
-# This adds the "dotfiles" alias, used for sharing my dotfiles (see README_DOTFILES.md)
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
