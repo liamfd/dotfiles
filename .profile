@@ -1,11 +1,11 @@
 # PYTHON
-
 # Setting PATH to support `pip3 install awscli --upgrade --user`
 # see https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html#awscli-install-osx-path
 PATH="${HOME}/Library/Python/3.6/bin:${PATH}"
 export PATH
 
 # Get my path set up for Android studio / RN / Fastlane
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -96,6 +96,8 @@ global_find_replace(){
 }
 
 # ALIASES
+# use https://github.com/eza-community/eza for ls
+alias ls=eza
 
 # Git
 alias glom='git pull origin master' # new
