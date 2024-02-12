@@ -17,15 +17,13 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # FUNCTIONS
 
-git_checkout_branch_from_origin()
-{
+git_checkout_branch_from_origin() {
   REMOTE_BRANCH_NAME=$1 # string
-  LOCAL_BRANCH_NAME=$2 # ?string
+  LOCAL_BRANCH_NAME=$2  # ?string
 
   git fetch
 
-  if [ $LOCAL_BRANCH_NAME ]
-  then
+  if [ $LOCAL_BRANCH_NAME ]; then
     # if we have LOCAL_BRANCH_NAME, treat it as a totally separate branch
     git checkout -b $LOCAL_BRANCH_NAME origin/$REMOTE_BRANCH_NAME --no-track
   else
@@ -34,8 +32,7 @@ git_checkout_branch_from_origin()
   fi
 }
 
-git_rename_remote_branch()
-{
+git_rename_remote_branch() {
   NEW_NAME=$1
 
   # get current branch name, throw if in detached HEAD state
@@ -48,22 +45,19 @@ git_rename_remote_branch()
 
 # create fixup commit and launch interactive rebase to apply it
 # pairs well with `glfhash` below
-git_fixup_rebase_autosquash()
-{
+git_fixup_rebase_autosquash() {
   git commit --fixup $1
   git rebase -i $1~ --autosquash
 }
 
-jq_format_file()
-{
+jq_format_file() {
   FILE_PATH=$1
 
-  echo "$(jq . $FILE_PATH)" > $FILE_PATH
+  echo "$(jq . $FILE_PATH)" >$FILE_PATH
 }
 
 # create a file with intermediate directories as needed
-touch_p()
-{
+touch_p() {
   FILE_PATH=$1
   DIR_PATH=$(dirname $FILE_PATH)
 
@@ -72,8 +66,7 @@ touch_p()
 }
 
 # create a file with intermediate directories as needed
-file_with_intermediate()
-{
+file_with_intermediate() {
   git checkout -b
   DIR_PATH=$(dirname $FILE_PATH)
 
@@ -81,18 +74,22 @@ file_with_intermediate()
   touch $FILE_PATH
 }
 
-git_add_patch_and_commit(){
+git_add_patch_and_commit() {
   git add --patch "$@"
   git commit
 }
 
-go_to_gh_pr(){
+go_to_gh_pr() {
   gh pr view -w || gh pr create -d
 }
 
 # https://gist.github.com/hlissner/db74d23fc00bed81ff62
-global_find_replace(){
+global_find_replace() {
   ag -0 -l $1 | xargs -0 perl -pi.bak -e "s/$1/$2/g"
+}
+
+diff_fancy_unified() {
+  diff -u "$1" "$2" | diff-so-fancy
 }
 
 # ALIASES
@@ -100,6 +97,7 @@ global_find_replace(){
 alias ls=eza
 
 # Git
+alias gllo='git log --pretty=format:"%h%x09%x09%ad%x09%s"'
 alias glom='git pull origin master' # new
 # alias gcam='git add .; git commit -m' # overridden, to include untracked files
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
@@ -121,9 +119,13 @@ alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verif
 # interactively choose a commit hash from the last 30 in the log
 alias glfhash="git log --oneline -n 30 | fzf --no-sort | awk '{print \$1}'"
 
+# nicer unified diff ui
+alias diffu=diff_fancy_unified
+
 alias format_json_file=jq_format_file
 alias touchp=touch_p
 alias ghpr=go_to_gh_pr
 alias agr=global_find_replace
 alias histog="sort -n | uniq -c | sort -nr"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias restart='exec zsh -l'
