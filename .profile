@@ -94,7 +94,7 @@ diff_fancy_unified() {
 
 diff_fancy_unified_json() {
   # sorting the keys reduces false positives in the diff output
-  diff -u <(jq --sort-keys ."$1") <(jq --sort-keys "$2") | diff-so-fancy
+  diff_fancy_unified <(jq --sort-keys . "$1") <(jq --sort-keys . "$2")
 }
 
 # ALIASES
@@ -125,7 +125,7 @@ alias gwip='git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verif
 alias glfhash="git log --oneline -n 30 | fzf --no-sort | awk '{print \$1}'"
 
 alias diffu=diff_fancy_unified
-alias diffj=diff_fancy_unified
+alias diffj=diff_fancy_unified_json
 
 alias format_json_file=jq_format_file
 alias touchp=touch_p
