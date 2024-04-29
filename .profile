@@ -79,8 +79,9 @@ git_add_patch_and_commit() {
   git commit
 }
 
+# open the current PR in the browser. If it doesn't exist, create it then open.
 go_to_gh_pr() {
-  gh pr view -w || gh pr create -d
+  gh pr view -w || (gh pr create -d && gh pr view -w)
 }
 
 # https://gist.github.com/hlissner/db74d23fc00bed81ff62
@@ -114,6 +115,7 @@ alias gfixra=git_fixup_rebase_autosquash
 alias glp="git log"
 alias gapac=git_add_patch_and_commit
 alias agapac="git add --intent-to-add . && git_add_patch_and_commit"
+alias ms="gco master && ggpull"
 
 # render an interactive git branch picker sorted by most recent commit
 alias gbrecent='git branch --sort=-committerdate | fzf'
