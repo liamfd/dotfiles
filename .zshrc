@@ -77,6 +77,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# plugins=(git z colored-man-pages colorize github macos zsh-syntax-highlighting zsh-better-npm-completion)
 plugins=(git z colored-man-pages colorize github macos zsh-syntax-highlighting zsh-better-npm-completion zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
@@ -100,6 +101,10 @@ source $ZSH/oh-my-zsh.sh
 
 # override standard to enable searching history with globs
 bindkey '^R' history-incremental-pattern-search-backward
+
+#
+bindkey '^ ' autosuggest-accept
+
 
 # Setup
 ## custom aliases
@@ -144,3 +149,13 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# bun completions
+[ -s "/Users/liamdoran/.bun/_bun" ] && source "/Users/liamdoran/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -94,8 +94,10 @@ diff_fancy_unified() {
 }
 
 diff_fancy_unified_json() {
+  JQ_PATH=${3:-.} # optional third arg to define the path to compare
+
   # sorting the keys reduces false positives in the diff output
-  diff_fancy_unified <(jq --sort-keys . "$1") <(jq --sort-keys . "$2")
+  diff_fancy_unified <(jq --sort-keys $JQ_PATH "$1") <(jq --sort-keys $JQ_PATH "$2")
 }
 
 # ALIASES
@@ -104,7 +106,7 @@ alias ls=eza
 
 # Git
 alias gllo='git log --pretty=format:"%h%x09%x09%ad%x09%s"'
-alias glom='git pull origin master' # new
+alias glom='git pull origin master'
 # alias gcam='git add .; git commit -m' # overridden, to include untracked files
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
 alias gcbo='git_checkout_branch_from_origin'
@@ -115,7 +117,10 @@ alias gfixra=git_fixup_rebase_autosquash
 alias glp="git log"
 alias gapac=git_add_patch_and_commit
 alias agapac="git add --intent-to-add . && git_add_patch_and_commit"
-alias ms="gco master && ggpull"
+alias mr="gco master && ggpull"
+
+# FIXME: add an alias for git rebase --onto origin/master 96a8ea41b6b05abb47f415db45e4510750869ae1 $(git_current_branch)
+# maybe a general one not bound to master, and a thing to update the remote ref
 
 # render an interactive git branch picker sorted by most recent commit
 alias gbrecent='git branch --sort=-committerdate | fzf'
