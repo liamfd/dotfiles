@@ -27,7 +27,7 @@ dotfiles config --local status.showUntrackedFiles no
 
     ```bash
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/    zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -46,12 +46,14 @@ dotfiles config --local status.showUntrackedFiles no
 4. Install some other programs you like:
 
     ```bash
-    brew install --cask iterm2 visual-studio-code spotify
+    brew install --cask iterm2 visual-studio-code spotify cursor arc 1password google-chrome
     ```
 
 5. Install some programming environment things:
 
     1. [Install NVM](https://github.com/nvm-sh/nvm)
+
+6. `source ~/.zshrc` and make sure there are no errors.
 
 ### Update
 
