@@ -1,7 +1,9 @@
 # dotfiles
+
 This approach is based on https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/.
 
 ### Setup (new computer):
+
 ```sh
 # in ~
 
@@ -25,33 +27,33 @@ dotfiles config --local status.showUntrackedFiles no
 1. [Install `homebrew`](https://brew.sh/)
 2. Setup oh-my-zsh and plugins
 
-    ```bash
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    ```
+   ```bash
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+   git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
+   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+   ```
 
-    Additionally, [install + configure the powerlevel10k fonts](https://github.com/romkatv/powerlevel10k#fonts), you'll want to support both iterm and vscode.
+   Additionally, [install + configure the powerlevel10k fonts](https://github.com/romkatv/powerlevel10k#fonts), you'll want to support both iterm and vscode.
 
 3. Install some useful command line utils:
 
-    ```bash
-    brew install gh tree ag jq fzf diff-so-fancy eza
-    ```
+   ```bash
+   brew install gh tree ag jq fzf diff-so-fancy eza
+   ```
 
-    `diff-so-fancy` requires some [additional setup](https://github.com/so-fancy/diff-so-fancy#with-git) to use with other command line tools.
+   `diff-so-fancy` requires some [additional setup](https://github.com/so-fancy/diff-so-fancy#with-git) to use with other command line tools.
 
 4. Install some other programs you like:
 
-    ```bash
-    brew install --cask iterm2 visual-studio-code spotify cursor arc 1password google-chrome
-    ```
+   ```bash
+   brew install --cask iterm2 visual-studio-code spotify cursor arc 1password google-chrome
+   ```
 
 5. Install some programming environment things:
 
-    1. [Install NVM](https://github.com/nvm-sh/nvm)
+   1. [Install NVM](https://github.com/nvm-sh/nvm)
 
 6. `source ~/.zshrc` and make sure there are no errors.
 

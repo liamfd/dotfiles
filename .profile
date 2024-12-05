@@ -141,3 +141,6 @@ alias agr=global_find_replace
 alias histog="sort -n | uniq -c | sort -nr"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias restart='exec zsh -l'
+
+# deno
+. "/Users/liam/.deno/env"

@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/liam/completions:"* ]]; then export FPATH="/Users/liam/completions:$FPATH"; fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -155,3 +158,11 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# postgres
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+. "/Users/liam/.deno/env"
+
+# Initialize zsh completions (added by deno install script)
+autoload -Uz compinit
+compinit
