@@ -50,6 +50,13 @@ git_fixup_rebase_autosquash() {
   git rebase -i $1~ --autosquash
 }
 
+# https://stackoverflow.com/a/50056710
+git_primary_branch() {
+  git remote show origin | grep "HEAD branch" | sed 's/.*: //'
+
+  # TODO: readthrough cache this - git root dir path to branch name.
+}
+
 jq_format_file() {
   FILE_PATH=$1
 
@@ -106,18 +113,18 @@ alias ls=eza
 
 # Git
 alias gllo='git log --pretty=format:"%h%x09%x09%ad%x09%s"'
-alias glom='git pull origin master'
-# alias gcam='git add .; git commit -m' # overridden, to include untracked files
+alias glom='git pull origin $(git_primary_branch)'
+alias gllm='git fetch && git log origin $(git_primary_branch)'
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
 alias gcbo='git_checkout_branch_from_origin'
-alias gcbom='git_checkout_branch_from_origin master'
+alias gcbom='git_checkout_branch_from_origin $(git_primary_branch)'
 alias grrb=git_rename_remote_branch
 alias gfix="git commit --fixup"
 alias gfixra=git_fixup_rebase_autosquash
 alias glp="git log"
 alias gapac=git_add_patch_and_commit
 alias agapac="git add --intent-to-add . && git_add_patch_and_commit"
-alias mr="gco master && ggpull"
+alias mr='gco $(git_primary_branch) && ggpull'
 
 # FIXME: add an alias for git rebase --onto origin/master 96a8ea41b6b05abb47f415db45e4510750869ae1 $(git_current_branch)
 # maybe a general one not bound to master, and a thing to update the remote ref
