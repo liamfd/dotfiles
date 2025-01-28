@@ -112,7 +112,7 @@ diff_fancy_unified_json() {
 alias ls=eza
 
 # Git
-alias gllo='git log --pretty=format:"%h%x09%x09%ad%x09%s"'
+alias gllo='git log --pretty=format:"%C(yellow)%h%Creset %C(blue)%<(14,trunc)%an%Creset %C(green)%ad%Creset %C(reset)%s" --date="local"'
 alias glom='git pull origin $(git_primary_branch)'
 alias gllm='git fetch && git log origin $(git_primary_branch)'
 alias gcam='echo "DO NOT COMMIT ALL, STAGE AND COMMIT INDIVIDUALLY"'
