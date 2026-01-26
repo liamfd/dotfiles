@@ -1,3 +1,6 @@
+# disable ctrl+d to kill terminal
+set -o ignoreeof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -152,17 +155,10 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
-# bun completions
-[ -s "/Users/liamdoran/.bun/_bun" ] && source "/Users/liamdoran/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# claude
+alias claude='~/.claude/local/claude'
 
 # postgres
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
-. "/Users/liam/.deno/env"
 
-# Initialize zsh completions (added by deno install script)
-autoload -Uz compinit
-compinit

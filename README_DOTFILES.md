@@ -40,7 +40,7 @@ dotfiles config --local status.showUntrackedFiles no
 3. Install some useful command line utils:
 
    ```bash
-   brew install gh tree ag jq fzf diff-so-fancy eza
+   brew install gh tree ag jq fzf diff-so-fancy eza tmux
    ```
 
    `diff-so-fancy` requires some [additional setup](https://github.com/so-fancy/diff-so-fancy#with-git) to use with other command line tools.

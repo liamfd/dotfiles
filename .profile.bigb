@@ -1,0 +1,7 @@
+# Big Basin Labs development config
+
+# deno
+. "$HOME/.deno/env"
+
+# ngrok
+export NGROK_URL=https://liam.bigbasin.ngrok.dev

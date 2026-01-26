@@ -1,3 +1,6 @@
+# Local binaries (claude native install, etc.)
+export PATH="$HOME/.local/bin:$PATH"
+
 # PYTHON
 # Setting PATH to support `pip3 install awscli --upgrade --user`
 # see https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html#awscli-install-osx-path
@@ -12,10 +15,60 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+# color when piping to tee
+export FORCE_COLOR=1
+
 # Rust
 # source "$HOME/.cargo/env"
 
 # FUNCTIONS
+
+ltf() {
+	# Parse arguments
+	local tmp_flag=false
+	local prefix=""
+
+	while [[ $# -gt 0 ]]; do
+		case $1 in
+			--tmp)
+				tmp_flag=true
+				shift
+				;;
+			*)
+				prefix="$1"
+				shift
+				;;
+		esac
+	done
+
+	# Check if prefix is provided
+	if [[ -z "$prefix" ]]; then
+		echo "Error: prefix argument is required" >&2
+		echo "Usage: ltf [--tmp] <prefix>" >&2
+		return 1
+	fi
+
+	# Determine log directory
+	if [[ "$tmp_flag" == true ]]; then
+		local log_dir="/tmp/logs"
+	else
+		local log_dir="./logs"
+	fi
+
+	# Create log directory if it doesn't exist
+	mkdir -p "$log_dir"
+
+	# Generate date string (YYYY-MM-DD-HHMMSS format)
+	local date_string
+	date_string=$(date +"%Y-%m-%d-%H%M%S")
+
+	# Construct log file path
+	local log_file="${log_dir}/${prefix}-${date_string}.log"
+
+	# Pipe stdin to log file and stdout
+  # -i allows it to ignore interrupts, which lets the other process handle shutdown gracefully.
+	tee -i "$log_file"
+}
 
 git_checkout_branch_from_origin() {
   REMOTE_BRANCH_NAME=$1 # string
@@ -149,5 +202,17 @@ alias histog="sort -n | uniq -c | sort -nr"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias restart='exec zsh -l'
 
-# deno
-. "/Users/liam/.deno/env"
+# c - run claude from git root
+c() {
+  local git_root
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+  if [[ -z "$git_root" ]]; then
+    claude "$@"
+  else
+    (cd "$git_root" && claude "$@")
+  fi
+}
+
+# Big Basin Labs
+. "$HOME/.profile.bigb"
