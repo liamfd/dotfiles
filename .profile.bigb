@@ -1,7 +1,7 @@
 # Big Basin Labs development config
 
+# secrets (not tracked)
+[ -f "$HOME/.profile.bigb.secret" ] && . "$HOME/.profile.bigb.secret"
+
 # deno
 . "$HOME/.deno/env"
-
-# ngrok
-export NGROK_URL=https://liam.bigbasin.ngrok.dev
