@@ -202,17 +202,20 @@ alias histog="sort -n | uniq -c | sort -nr"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias restart='exec zsh -l'
 
-# c - run claude from git root
-c() {
+# claude - run claude from git root
+claudeGitRoot() {
   local git_root
   git_root=$(git rev-parse --show-toplevel 2>/dev/null)
 
   if [[ -z "$git_root" ]]; then
-    claude "$@"
+    command claude "$@"
   else
-    (cd "$git_root" && claude "$@")
+    (cd "$git_root" && command claude "$@")
   fi
 }
+alias claude='claudeGitRoot'
+alias c='claude'
+alias cc='claude --dangerously-skip-permissions'
 
 # Big Basin Labs
 . "$HOME/.profile.bigb"

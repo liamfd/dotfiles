@@ -156,8 +156,6 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 
-# claude
-alias claude='~/.claude/local/claude'
 
 # postgres
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
